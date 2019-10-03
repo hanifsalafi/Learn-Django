@@ -6,24 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ judul }}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
 <body>
+    <img style="width:100%" src="{% static banner %}" alt="">
+    <nav>
+        <ul>
+            {% for link,name in nav %}
+                <li><a href="{{ link }}">{{ name }}</a></li>
+            {% endfor %}
+        </ul>
+    </nav>
+
     <h1>Halaman {{ judul }} - {{ sub_judul }}</h1>
-    <h3>Navigasi :</h3>
-    <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/about/">About</a></li>
-        <li>
-            <a href="/blog/">Blog</a>
-            <ul>
-                <li><a href="/blog/recent">Recent</a></li>
-                <li><a href="/blog/popular">Popular</a></li>
-            </ul>
-        </li>
-    </ul>
-    
     {% if sub_judul == 'Dashboard' %}
-        <img style="width:100%" src="{% static banner %}" alt="">
+        <h2>Selamat Datang di {{ sub_judul }}</h2>
     {% elif sub_judul == 'Recent Post' %}
         <h2>{{ sub_judul}}</h2>
         <hr>
