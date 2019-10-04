@@ -2,34 +2,13 @@
     width:100%
 }
 
-h1, h2 {
-    color: #555555;
-    font-family: Arial, Helvetica, sans-serif;
+#jumbotron {
+    background-image: url("/static/img/mainHeader.jpg");
+    background-position: center;
+    background-size: cover;
+    height: 300px;
 }
 
-nav ul {
-    background-color: rgb(229, 226, 226);
-    list-style-type: none;
-    margin: 0;
-    overflow: hidden;
-    padding: 0;
-}
-
-nav li {
-    width: 100px;
-    float: left;
-    text-align: center;
-}
-
-nav a {
-    color: #11af95;
-    font-family: Arial, Helvetica, sans-serif;
-    padding: 10px 10px;
-    text-decoration: none;
-    display: block;
-}
-
-nav a:hover {
-    background-color: #555555;
-    color: #ffffff;
+.logo-navbar {
+    height:30px;
 }
