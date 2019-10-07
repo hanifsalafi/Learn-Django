@@ -6,9 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ judul }}</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/bootstrap.min.css' %}">
-
+    {% include 'snippets/styles.html' %}
 </head>
 <body>
     <div class="container">
