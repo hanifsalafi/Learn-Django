@@ -1,45 +1,26 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{ judul }}</title>
-    {% include 'snippets/styles.html' %}
-</head>
-<body>
-    <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-            <a class="navbar-brand" href="#"><img class="logo-navbar" src="{% static 'img/logo.png' %}" alt=""></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">  
-                <ul class="navbar-nav mr-auto">              
-                {% for link, name in nav %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ link }}">{{ name }}</a>
-                    </li>
-                {% endfor %}
-                </ul>
-            </div>
-        </nav>
-        <div class="jumbotron jumbotron-fluid" id="jumbotron">
-            <div class="container">
-                <h1 class="display-6">Selamat Datang di {{ sub_judul}}</h1>
-                <p class="lead">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                        when an unknown printer took a galley of type and scrambled it to make a type
-                        specimen book.</p>
-            </div>
+{% extends 'base.html' %}
+
+
+{% block jumbotron %}
+    <div class="jumbotron jumbotron-fluid" id="jumbotron">
+        <div class="container">
+            <h1 class="display-6">Selamat Datang di {{ sub_judul}}</h1>
+            <p class="lead">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                    when an unknown printer took a galley of type and scrambled it to make a type
+                    specimen book.</p>
         </div>
     </div>
+{% endblock jumbotron %}
     
 
-    <script type="text/javascript" src="{% static 'vendor/jquery/jquery-3.3.1.slim.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'vendor/popper/popper.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'vendor/bootstrap/bootstrap.min.js' %}" ></script>
-</body>
-</html>
+{% block content %}
+    <div class="container">
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+            when an unknown printer took a galley of type and scrambled it to make a type
+            specimen book.</p>
+    </div>
+{% endblock content %}
+    
+    

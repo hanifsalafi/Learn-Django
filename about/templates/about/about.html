@@ -1,38 +1,44 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-</head>
-<body>
-    <img style="width:100%" src="{% static banner %}" alt="">
-    <nav>
-        <ul>
-            {% for link,name in nav %}
-                <li><a href="{{ link }}">{{ name }}</a></li>
-            {% endfor %}
-        </ul>
-    </nav>
-    <h1>Halaman {{ judul }} - {{ sub_judul }}</h1>
-    {% if sub_judul == 'Dashboard' %}
-        <h2>Selamat Datang di {{ sub_judul }}</h2>
-    {% elif sub_judul == 'Contact' %}
-        <h2>{{ sub_judul}}</h2>
-        <hr>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-            when an unknown printer took a galley of type and scrambled it to make a type 
-            specimen book. </p>
-    {% else %}
+
+{% block app-css %}
+<link rel="stylesheet" type="text/css" href="{% static 'about/css/style.css' %}">
+{% endblock app-css %}
+    
+{% block jumbotron %}
+<div class="jumbotron jumbotron-fluid" id="jumbotron">
+    <div class="container">
+        <h1 class="display-6">{{ judul }}</h1>
+        <h3 class="lead">Tentang kami</h3>
+    </div>
+</div>
+{% endblock jumbotron %}
+
+{% block content %}
+<div class="container">
+    {% if sub_judul == 'Recent Post' %}
+    <h2>{{ sub_judul}}</h2>
+    <hr>
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+        when an unknown printer took a galley of type and scrambled it to make a type 
+        specimen book. </p>
+    {% elif sub_judul == 'Popular Post'%}
         <h2>{{ sub_judul}}</h2>
         <hr>
         <p>It has survived not only five centuries, but also the leap into electronic typesetting, 
-                remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset 
-                sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus 
-                PageMaker including versions of Lorem Ipsum.</p>
+            remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset 
+            sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus 
+            PageMaker including versions of Lorem Ipsum.</p>
     {% endif %}
-</body>
-</html>
+</div>
+{% endblock content %}
+
+
+{% block overload_content %}
+    <h1>Tentang Kami</h1>
+{% endblock overload_content %}
+    
+
+
+    
