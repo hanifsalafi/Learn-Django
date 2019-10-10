@@ -22,6 +22,38 @@ def index(request):
     }
     return render(request, sub_dir+'blog.html', context)
 
+def berita(request):
+    # queryset
+    posts = Post.objects.filter(category='berita')
+    context = {
+        'judul': 'Blog',
+        'sub_judul': 'Dashboard',
+        'banner': 'blog/img/banner_blog.png',
+        'nav': [
+            ['/', 'Home'],
+            ['/about', 'About'],
+            ['/blog', 'Blog']
+        ],
+        'Posts': posts
+    }
+    return render(request, sub_dir+'blog.html', context)
+
+def blog(request):
+    # queryset
+    posts = Post.objects.filter(category='blog')
+    context = {
+        'judul': 'Blog',
+        'sub_judul': 'Dashboard',
+        'banner': 'blog/img/banner_blog.png',
+        'nav': [
+            ['/', 'Home'],
+            ['/about', 'About'],
+            ['/blog', 'Blog']
+        ],
+        'Posts': posts
+    }
+    return render(request, sub_dir+'blog.html', context)
+
 def recent(request):
     context = {
         'judul': 'Blog',

@@ -38,7 +38,11 @@
 {% block overload_content %}
     <ol>
         {% for post in Posts %}
-            <li><h3>{{ post.title }}</h3><p>{{ post.body }}</p></li>
+            <li>
+                <h3>{{ post.title }}</h3>
+                <a href="{{ post.category }}">{{ post.category }}</a>
+                <p>{{ post.body }}</p>
+            </li>
         {% endfor %}
     </ol>
 {% endblock overload_content %}
