@@ -1,11 +1,14 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Post
 
 # Create your views here.
 
 sub_dir = 'blog/'
 
 def index(request):
+    # queryset
+    posts = Post.objects.all()
     context = {
         'judul': 'Blog',
         'sub_judul': 'Dashboard',
@@ -15,6 +18,7 @@ def index(request):
             ['/about', 'About'],
             ['/blog', 'Blog']
         ],
+        'Posts': posts
     }
     return render(request, sub_dir+'blog.html', context)
 
