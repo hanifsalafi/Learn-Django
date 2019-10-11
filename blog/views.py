@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Post
-
 # Create your views here.
 
 sub_dir = 'blog/'
@@ -81,4 +80,9 @@ def popular(request):
     return render(request, sub_dir+'blog.html', context)
 
 
-    
+def singlePost(request, slug):
+    post = Post.objects.get(slug=slug)
+    title =  '<h3>{}</h3>'.format(post.title)
+    category = '<a href="{}">{}</a>'.format(post.category, post.category) 
+    body = '<p>{}</p>'.format(post.body)
+    return HttpResponse(title+category+body)

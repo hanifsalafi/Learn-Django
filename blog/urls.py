@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, re_path, include
 
 from . import views
 
@@ -7,5 +7,6 @@ urlpatterns = [
     path('recent/', views.recent),
     path('popular/', views.popular),
     path('berita/', views.berita),
-    path('blog/', views.blog)
+    path('blog/', views.blog),
+    re_path('post/(?P<slug>[\w-]+)/$', views.singlePost)
 ]
