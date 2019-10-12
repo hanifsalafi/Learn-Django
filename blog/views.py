@@ -83,6 +83,6 @@ def popular(request):
 def singlePost(request, slug):
     post = Post.objects.get(slug=slug)
     title =  '<h3>{}</h3>'.format(post.title)
-    category = '<a href="{}">{}</a>'.format(post.category, post.category) 
+    category = '<a href="/blog/{}">{}</a>'.format(post.category, post.category) 
     body = '<p>{}</p>'.format(post.body)
     return HttpResponse(title+category+body)

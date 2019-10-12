@@ -4,7 +4,7 @@ from django.contrib import admin
 from .models import Post
 
 class PostAdmin(admin.ModelAdmin):
-    readonly_fields = ['slug',]
+    readonly_fields = ['slug','created_time','updated_time']
 
 
 admin.site.register(Post, PostAdmin)

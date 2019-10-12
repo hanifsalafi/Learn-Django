@@ -1,0 +1,2 @@
+2019-10-12 09:39:43,119 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2019-10-12 09:40:17,452 django.utils.autoreload INFO     F:\Learning\Django\Tutorial\Learn-Django\mywebsite\settings.py changed, reloading.
