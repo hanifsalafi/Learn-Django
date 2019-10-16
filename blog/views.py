@@ -25,7 +25,7 @@ def berita(request):
     # queryset
     posts = Post.objects.filter(category='berita')
     context = {
-        'judul': 'Blog',
+        'judul': 'Kategori Berita',
         'sub_judul': 'Dashboard',
         'banner': 'blog/img/banner_blog.png',
         'nav': [
@@ -41,7 +41,7 @@ def blog(request):
     # queryset
     posts = Post.objects.filter(category='blog')
     context = {
-        'judul': 'Blog',
+        'judul': 'Kategori Blog',
         'sub_judul': 'Dashboard',
         'banner': 'blog/img/banner_blog.png',
         'nav': [
@@ -82,7 +82,18 @@ def popular(request):
 
 def singlePost(request, slug):
     post = Post.objects.get(slug=slug)
-    title =  '<h3>{}</h3>'.format(post.title)
-    category = '<a href="/blog/{}">{}</a>'.format(post.category, post.category) 
-    body = '<p>{}</p>'.format(post.body)
-    return HttpResponse(title+category+body)
+    # title =  '<h3>{}</h3>'.format(post.title)
+    # category = '<a href="/blog/{}">{}</a>'.format(post.category, post.category) 
+    # body = '<p>{}</p>'.format(post.body)
+    context = {
+        'judul': 'Konten Blog',
+        'sub_judul': 'Popular Post',
+        'banner': 'blog/img/banner_blog.png',
+        'nav': [
+            ['/', 'Home'],
+            ['/about', 'About'],
+            ['/blog', 'Blog']
+        ],
+        'post': post
+    }
+    return render(request, sub_dir+'blog.html', context)
