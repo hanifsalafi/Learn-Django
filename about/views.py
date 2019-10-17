@@ -10,9 +10,9 @@ def index(request):
         'sub_judul': 'Dashboard',
         'banner': 'about/img/banner_about.png',
         'nav': [
-            ['/', 'Home'],
-            ['/about', 'About'],
-            ['/blog', 'Blog']
+            ['index', 'Home'],
+            ['about:index', 'About'],
+            ['blog:index', 'Blog']
         ],
     }
     return render(request, sub_dir+'about.html', context)
@@ -22,9 +22,9 @@ def contact(request):
         'judul': 'About',
         'sub_judul': 'Contact',
         'nav': [
-            ['/', 'Home'],
-            ['/about', 'About'],
-            ['/blog', 'Blog']
+            ['index', 'Home'],
+            ['about:index', 'About'],
+            ['blog:index', 'Blog']
         ],
     }
     return render(request, sub_dir+'about.html', context)
@@ -34,9 +34,9 @@ def address(request):
         'judul': 'About',
         'sub_judul': 'Address',
         'nav': [
-            ['/', 'Home'],
-            ['/about', 'About'],
-            ['/blog', 'Blog']
+            ['index', 'Home'],
+            ['about:index', 'About'],
+            ['blog:index', 'Blog']
         ],
     }
     return render(request, sub_dir+'about.html', context)

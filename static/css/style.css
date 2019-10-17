@@ -12,3 +12,12 @@
 .logo-navbar {
     height:30px;
 }
+
+#navbar-base .nav-link {
+    color: #ffffff;
+}
+
+#navbar-base .nav-item.active .nav-link,
+#navbar-base .nav-item:hover .nav-link {
+    color: #8b8b8b;
+}

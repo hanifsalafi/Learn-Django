@@ -8,91 +8,53 @@ sub_dir = 'blog/'
 def index(request):
     # queryset
     posts = Post.objects.all()
+    
+    posts_categories = Post.objects.values('category').distinct()
+
     context = {
         'judul': 'Blog',
         'sub_judul': 'Dashboard',
         'banner': 'blog/img/banner_blog.png',
         'nav': [
-            ['/', 'Home'],
-            ['/about', 'About'],
-            ['/blog', 'Blog']
+            ['index', 'Home'],
+            ['about:index', 'About'],
+            ['blog:index', 'Blog']
         ],
-        'Posts': posts
+        'Posts': posts,
+        'Categories': posts_categories
     }
     return render(request, sub_dir+'blog.html', context)
 
-def berita(request):
+def categoryPost(request, categoryInput):
     # queryset
-    posts = Post.objects.filter(category='berita')
+    posts = Post.objects.filter(category=categoryInput)
+
+    posts_categories = Post.objects.values('category').distinct()
+
     context = {
-        'judul': 'Kategori Berita',
+        'judul': 'Kategori {}'.format(categoryInput.title()),
         'sub_judul': 'Dashboard',
         'banner': 'blog/img/banner_blog.png',
         'nav': [
-            ['/', 'Home'],
-            ['/about', 'About'],
-            ['/blog', 'Blog']
+            ['index', 'Home'],
+            ['about:index', 'About'],
+            ['blog:index', 'Blog']
         ],
-        'Posts': posts
+        'Posts': posts,
+        'Categories': posts_categories
     }
     return render(request, sub_dir+'blog.html', context)
-
-def blog(request):
-    # queryset
-    posts = Post.objects.filter(category='blog')
-    context = {
-        'judul': 'Kategori Blog',
-        'sub_judul': 'Dashboard',
-        'banner': 'blog/img/banner_blog.png',
-        'nav': [
-            ['/', 'Home'],
-            ['/about', 'About'],
-            ['/blog', 'Blog']
-        ],
-        'Posts': posts
-    }
-    return render(request, sub_dir+'blog.html', context)
-
-def recent(request):
-    context = {
-        'judul': 'Blog',
-        'sub_judul': 'Recent Post',
-        'banner': 'blog/img/banner_blog.png',
-        'nav': [
-            ['/', 'Home'],
-            ['/about', 'About'],
-            ['/blog', 'Blog']
-        ],
-    }
-    return render(request, sub_dir+'blog.html', context)
-
-def popular(request):
-    context = {
-        'judul': 'Blog',
-        'sub_judul': 'Popular Post',
-        'banner': 'blog/img/banner_blog.png',
-        'nav': [
-            ['/', 'Home'],
-            ['/about', 'About'],
-            ['/blog', 'Blog']
-        ],
-    }
-    return render(request, sub_dir+'blog.html', context)
-
 
 def singlePost(request, slug):
     post = Post.objects.get(slug=slug)
-    # title =  '<h3>{}</h3>'.format(post.title)
-    # category = '<a href="/blog/{}">{}</a>'.format(post.category, post.category) 
-    # body = '<p>{}</p>'.format(post.body)
     context = {
         'judul': 'Konten Blog',
         'sub_judul': 'Popular Post',
         'banner': 'blog/img/banner_blog.png',
         'nav': [
-            ['/', 'Home'],
-            ['/about', 'About'],
-            ['/blog', 'Blog']
+            ['index', 'Home'],
+            ['about:index', 'About'],
+            ['blog:index', 'Blog']
         ],
         'post': post
     }

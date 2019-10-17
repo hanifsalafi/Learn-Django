@@ -26,20 +26,32 @@
         {% endif %}
         <div class="card-body">
             {% if judul == 'Blog' or 'Kategori' in judul %}
+                <ul class="nav justify-content-start" style="background-color: #b3d7ff; border-radius:6px;">
+                    <li class="nav-item" style="border: 1px solid rgba(0, 123, 255, 0.25); border-radius: 6px;">
+                        <a class="nav-link" href="{% url 'blog:index' %}">All</a>
+                    </li>
+                    {% for category in Categories %}
+                    <li class="nav-item" style="border: 1px solid rgba(0, 123, 255, 0.25); border-radius:6px;">
+                        <a class="nav-link text-capitalize" href="{% url 'blog:category' categoryInput=category.category %}">{{ category.category }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            
                 <ul class="list-group">
-                        {% for post in Posts %}
+                    {% for post in Posts %}
                         <li class="list-group-item">
-                            <a href="post/{{ post.slug }}"><h3>{{ post.title }}</h3></a>
+                            <a href="{% url 'blog:post' slug=post.slug %}"><h3>{{ post.title }}</h3></a>
                             <div class="row">
-                                <div class="col-lg-1"><a href="/blog/{{ post.category }}">{{ post.category }}</a></div>
+                                <div class="col-lg-1"><a class="text-capitalize" href="{% url 'blog:category' categoryInput=post.category %}">{{ post.category }}</a></div>
                                 <div class="col-lg-3"><p>{{ post.created_time }}</p></div>
                             </div>
+                            <p>{{ post.body|truncatechars:250}}</p>
                         </li>
                     {% endfor %}
                 </ul>
             {% else %}
                 <div class="row">
-                    <div class="col-lg-1"><a href="/blog/{{ post.category }}">{{ post.category }}</a></div>
+                    <div class="col-lg-1"><a class="text-capitalize" href="{% url 'blog:category' categoryInput=post.category %}">{{ post.category }}</a></div>
                     <div class="col-lg-3"><p>{{ post.created_time }}</p></div>
                 </div>
                 <p class="card-text">{{ post.body }}</p>

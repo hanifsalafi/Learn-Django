@@ -7,9 +7,9 @@ def index(request):
         'judul': 'Website Tekno',
         'sub_judul': 'Blog Hanif',
         'nav': [
-            ['/', 'Home'],
-            ['/about', 'About'],
-            ['/blog', 'Blog']
+            ['index', 'Home'],
+            ['about:index', 'About'],
+            ['blog:index', 'Blog']
         ],
         'banner': 'img/banner_home.png'
     }
