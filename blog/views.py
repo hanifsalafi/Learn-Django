@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .forms import ContactForm
 from .models import Post
 # Create your views here.
 
@@ -59,3 +60,24 @@ def singlePost(request, slug):
         'post': post
     }
     return render(request, sub_dir+'blog.html', context)
+
+
+def create_post(request):
+
+    contact_form = ContactForm()
+
+    context = {
+        'judul': 'Buat Postingan',
+        'sub_judul': 'Create Post',
+        'banner': 'blog/img/banner_blog.png',
+        'nav': [
+            ['index', 'Home'],
+            ['about:index', 'About'],
+            ['blog:index', 'Blog']
+        ],
+        'form': contact_form
+    }
+
+    print(request.POST)
+
+    return render(request, sub_dir+'create_post.html', context)
