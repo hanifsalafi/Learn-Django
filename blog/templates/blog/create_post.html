@@ -19,12 +19,48 @@
     <div class="card">
         <h5 class="card-header">Create Post</h5>
         
-        <div class="card-body">
-            <form method="post">
+        <div class="card-body">            
+            {% if errors != None %}
+                {% for error in errors %}
+                    <div class="alert alert-danger" style="padding:0.2rem 0.74rem;margin:0.2rem 0 0 0" role="alert">
+                        {{ error }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+            <form method="POST" style="margin-top: 2rem;">
                 {% csrf_token %}
-                {{ form }}
                 <div class="form-group row">
-                    <label class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-2">
+                        <label for="{{ form.title.id_for_label }}">Judul</label>
+                    </div>
+                    <div class="col-sm-10">
+                        {{ form.title }}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-2">
+                        <label for="{{ form.category.id_for_label }}">Kategori</label>
+                    </div>
+                    <div class="col-sm-10">
+                        {% for component in form.category %}
+                            <div class="form-check-inline">
+                                {{ component.tag }}
+                                <label for="{{ form.component.id_for_label }}" class="form-check-label">{{ component.choice_label }}</label>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-2">
+                        <label for="{{ form.body.id_for_label }}">Isi Postingan</label>
+                    </div>
+                    <div class="col-sm-10">
+                        {{ form.body }}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-2"></div>
                     <div class="col-sm-10">
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>

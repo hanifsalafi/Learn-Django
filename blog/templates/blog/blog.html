@@ -25,9 +25,12 @@
             <h5 class="card-header">Post</h5>
         {% endif %}
         <div class="card-body">
+            
+            {% if judul != 'Konten Blog' %}
             <div class="card-title">
                 <a class="btn btn-success btn-md" href="{% url 'blog:create-post' %}">Create Post</a>
             </div>
+            {% endif %}
             {% if judul == 'Blog' or 'Kategori' in judul %}
                 <ul class="nav justify-content-start" style="background-color: #b3d7ff; border-radius:6px;">
                     <li class="nav-item" style="border: 1px solid rgba(0, 123, 255, 0.25); border-radius: 6px;">

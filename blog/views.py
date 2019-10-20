@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-from .forms import ContactForm
+from django.http import HttpResponse, HttpResponseRedirect
+from .forms import PostForm
 from .models import Post
 # Create your views here.
 
@@ -64,7 +64,23 @@ def singlePost(request, slug):
 
 def create_post(request):
 
-    contact_form = ContactForm()
+    post_form = PostForm(request.POST or None)
+    errors = None
+
+    if request.method == 'POST':
+        if post_form.is_valid():
+            Post.objects.create(
+                title = post_form.cleaned_data.get('title'),
+                category = post_form.cleaned_data.get('category'),
+                body = post_form.cleaned_data.get('body')
+            )
+            return HttpResponseRedirect("/blog/")
+        else:
+            list_error = []
+            for field, errors in post_form.errors.items():
+                error_str = '{} - {}'.format(field.capitalize(), ','.join(errors))
+                list_error.append(error_str)
+            errors = list_error 
 
     context = {
         'judul': 'Buat Postingan',
@@ -75,9 +91,8 @@ def create_post(request):
             ['about:index', 'About'],
             ['blog:index', 'Blog']
         ],
-        'form': contact_form
+        'form': post_form,
+        'errors': errors
     }
-
-    print(request.POST)
 
     return render(request, sub_dir+'create_post.html', context)
