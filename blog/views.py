@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from .forms import PostForm
 from .models import Post
@@ -69,12 +69,13 @@ def create_post(request):
 
     if request.method == 'POST':
         if post_form.is_valid():
-            Post.objects.create(
-                title = post_form.cleaned_data.get('title'),
-                category = post_form.cleaned_data.get('category'),
-                body = post_form.cleaned_data.get('body')
-            )
-            return HttpResponseRedirect("/blog/")
+            # Post.objects.create(
+            #     title = post_form.cleaned_data.get('title'),
+            #     category = post_form.cleaned_data.get('category'),
+            #     body = post_form.cleaned_data.get('body')
+            # )
+            post_form.save()
+            return redirect('blog:index')
         else:
             list_error = []
             for field, errors in post_form.errors.items():

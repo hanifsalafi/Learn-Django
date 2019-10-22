@@ -18,21 +18,20 @@
 <div class="container">
     <div class="card">
         <h5 class="card-header">Create Post</h5>
-        
-        <div class="card-body">            
+    
+        <div class="card-body">         
             {% if errors != None %}
-                {% for error in errors %}
+            {% for error in errors %}
                     <div class="alert alert-danger" style="padding:0.2rem 0.74rem;margin:0.2rem 0 0 0" role="alert">
                         {{ error }}
                     </div>
                 {% endfor %}
-            {% endif %}
-
+            {% endif %}   
             <form method="POST" style="margin-top: 2rem;">
-                {% csrf_token %}
+            {% csrf_token %}
                 <div class="form-group row">
                     <div class="col-sm-2">
-                        <label for="{{ form.title.id_for_label }}">Judul</label>
+                        <label>Judul</label>
                     </div>
                     <div class="col-sm-10">
                         {{ form.title }}
@@ -53,7 +52,7 @@
                 </div>
                 <div class="form-group row">
                     <div class="col-sm-2">
-                        <label for="{{ form.body.id_for_label }}">Isi Postingan</label>
+                        <label>Isi Postingan</label>
                     </div>
                     <div class="col-sm-10">
                         {{ form.body }}
