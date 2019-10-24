@@ -52,10 +52,10 @@ from .models import Post
 
 class PostForm(forms.ModelForm):
     CHOICES = [
-        ('Berita', 'berita'),
-        ('Jurnal', 'jurnal'),
-        ('Gosip', 'gosip'),
-        ('Kesehatan', 'kesehatan')
+        ('berita', 'Berita'),
+        ('jurnal', 'Jurnal'),
+        ('gosip', 'Gosip'),
+        ('kesehatan', 'Kesehatan')
     ]
     category = forms.ChoiceField(choices=CHOICES, widget=forms.RadioSelect(attrs={'class':'form-check-input'}))
 

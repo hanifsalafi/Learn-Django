@@ -46,7 +46,10 @@
                 <ul class="list-group">
                     {% for post in Posts %}
                         <li class="list-group-item">
-                            <a href="{% url 'blog:post' slug=post.slug %}"><h3>{{ post.title }}</h3></a>
+                            <div class="row">
+                                <div class="col-lg-6"><a href="{% url 'blog:post' slug=post.slug %}"><h3>{{ post.title }}</h3></a></div>
+                                <div class="col-lg-6 text-right"><a class="btn btn-warning btn-md text-right" href="{% url 'blog:delete-post' redirectTo=post.category deleteId=post.id %}">Delete Post</a></div>
+                            </div>
                             <div class="row">
                                 <div class="col-lg-1"><a class="text-capitalize" href="{% url 'blog:category' categoryInput=post.category %}">{{ post.category }}</a></div>
                                 <div class="col-lg-3"><p>{{ post.created_time }}</p></div>
@@ -59,6 +62,7 @@
                 <div class="row">
                     <div class="col-lg-1"><a class="text-capitalize" href="{% url 'blog:category' categoryInput=post.category %}">{{ post.category }}</a></div>
                     <div class="col-lg-3"><p>{{ post.created_time }}</p></div>
+                    <div class="col-lg-8 text-right"><a class="btn btn-success btn-sm text-right" href="{% url 'blog:update-post' updateId=post.id %}">Edit Post</a></div>
                 </div>
                 <p class="card-text">{{ post.body }}</p>
             {% endif %}
