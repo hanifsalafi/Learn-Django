@@ -1,11 +1,12 @@
 
 from django.contrib import admin
 from django.urls import path, include, re_path
-
+from django.views.generic.base import TemplateView, RedirectView
 from .views import views as home
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('home/', RedirectView.as_view(pattern_name="index"), name='home'),
     path('', home.index, name="index"),
     path('about/', include(('about.urls', 'about'), namespace='about')),
     path('blog/', include(('blog.urls', 'blog'), namespace='blog')),
